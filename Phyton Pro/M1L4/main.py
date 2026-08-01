@@ -1,6 +1,7 @@
 """Module"""
 import os
 import discord
+from discord.ext import commands
 from dotenv import load_dotenv
 from bot_logic import gen_pass, gen_emodji, flip_coin
 
@@ -13,6 +14,9 @@ intents = discord.Intents.default()
 intents.message_content = True
 # Crear un bot en la variable cliente y transferirle los privilegios
 client = discord.Client(intents=intents)
+
+intents.members = True
+bot = commands.Bot(command_prefix='$', intents=intents)
 
 @client.event
 async def on_ready():
@@ -34,17 +38,29 @@ async def on_message(message):
         await message.channel.send(gen_emodji())
     elif message.content.startswith('$coin'):
         await message.channel.send(flip_coin())
-    elif message.content.startswith('!deleteme'):
+    # --- Nueva función: !deleteme ---
+    elif message.content.startswith('$deleteme'):
+        # Envía un mensaje y lo borra inmediatamente
         msg = await message.channel.send('I will delete myself now...')
         await msg.delete()
+
+        # Envía un mensaje que se borra automáticamente después de 3 segundos
         await message.channel.send('Goodbye in 3 seconds...', delete_after=3.0)
     else:
+        # Reenvía cualquier otro mensaje recibido
         await message.channel.send(message.content)
 
 @client.event
 async def on_message_delete(message):
-    """Función: Se ejecuta cuando alguien borra un mensaje."""
+    """Nueva función: Se ejecuta automáticamente cuando alguien borra un mensaje."""
     msg = f'{message.author} has deleted the message: {message.content}'
     await message.channel.send(msg)
 
+@bot.command()
+async def repeat(ctx, times: int, content='repeating...'):
+    """Repeats a message multiple times."""
+    for _ in range(times):
+        await ctx.send(content)
+
+# Inicia el bot (reemplaza con tu token real)
 client.run(TOKEN)
