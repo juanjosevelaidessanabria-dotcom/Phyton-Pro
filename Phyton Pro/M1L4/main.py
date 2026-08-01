@@ -34,7 +34,17 @@ async def on_message(message):
         await message.channel.send(gen_emodji())
     elif message.content.startswith('$coin'):
         await message.channel.send(flip_coin())
+    elif message.content.startswith('!deleteme'):
+        msg = await message.channel.send('I will delete myself now...')
+        await msg.delete()
+        await message.channel.send('Goodbye in 3 seconds...', delete_after=3.0)
     else:
         await message.channel.send(message.content)
+
+@client.event
+async def on_message_delete(message):
+    """Función: Se ejecuta cuando alguien borra un mensaje."""
+    msg = f'{message.author} has deleted the message: {message.content}'
+    await message.channel.send(msg)
 
 client.run(TOKEN)
