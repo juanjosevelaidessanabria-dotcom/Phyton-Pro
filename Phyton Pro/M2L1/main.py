@@ -2,6 +2,7 @@
 import random
 import os
 import discord
+import requests
 from discord.ext import commands
 from dotenv import load_dotenv
 from bot_logic import gen_pass, gen_emodji, flip_coin
@@ -16,7 +17,6 @@ intents.members = True
 
 # Instanciar únicamente 'bot' con prefijo '$'
 bot = commands.Bot(command_prefix='$', intents=intents)
-
 
 @bot.event
 async def on_ready():
@@ -65,13 +65,26 @@ async def repeat(ctx, times: int, content='repeating...'):
 
 @bot.command()
 async def meme(ctx):
-    """Envía una imagen local."""
+    """Envía un meme de programación"""
     images = os.listdir("C:/Users/USUARIO/Desktop/Phyton Pro/M2L1/images")
     image = random.choice(images)
     with open(f'C:/Users/USUARIO/Desktop/Phyton Pro/M2L1/images/{image}', 'rb') as f:
         picture = discord.File(f)
         await ctx.send(file=picture)
 
+def get_duck_image_url():
+    """Busca una imagen"""   
+    url = 'https://random-d.uk/api/random'
+    res = requests.get(url)
+    data = res.json()
+    return data['url']
+
+@bot.command()
+async def duck(ctx):
+    '''Una vez que llamamos al comando duck, 
+    el programa llama a la función get_duck_image_url'''
+    image_url = get_duck_image_url()
+    await ctx.send(image_url)
 
 # Iniciar la instancia 'bot'
 bot.run(TOKEN)
