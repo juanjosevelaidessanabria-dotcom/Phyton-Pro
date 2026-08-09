@@ -40,10 +40,6 @@ async def on_message(message):
         await message.channel.send(gen_emodji())
     elif message.content.startswith('$coin'):
         await message.channel.send(flip_coin())
-    elif message.content.startswith('$deleteme'):
-        msg = await message.channel.send('I will delete myself now...')
-        await msg.delete()
-        await message.channel.send('Goodbye in 3 seconds...', delete_after=3.0)
 
     # LÍNEA CLAVE: Permite que discord.py procese los comandos como $repeat y $meme
     await bot.process_commands(message)
@@ -65,12 +61,21 @@ async def repeat(ctx, times: int, content='repeating...'):
 
 @bot.command()
 async def meme(ctx):
-    """Envía un meme de programación"""
-    images = os.listdir("C:/Users/USUARIO/Desktop/Phyton Pro/M2L1/images")
-    image = random.choice(images)
-    with open(f'C:/Users/USUARIO/Desktop/Phyton Pro/M2L1/images/{image}', 'rb') as f:
+    """Envía un meme con sistema de rarezas."""
+
+    rarezas = ['Comun', 'Raro', 'Legendario']
+    probabilidades = [0.70, 0.25, 0.05]
+    rareza_elegida = random.choices(rarezas, weights=probabilidades, k=1)[0]
+
+    # Usamos f-string para enviar UNA SOLA ruta completa a os.listdir
+    folder_path = f"C:/Users/USUARIO/OneDrive/Desktop/Phyton Pro/M2L1/images/{rareza_elegida}"
+    images = os.listdir(folder_path)
+
+    selected_image = random.choice(images)
+
+    with open(f"{folder_path}/{selected_image}", 'rb') as f:
         picture = discord.File(f)
-        await ctx.send(file=picture)
+        await ctx.send(content=f"**Meme {rareza_elegida}**", file=picture)
 
 def get_duck_image_url():
     """Busca una imagen"""   
