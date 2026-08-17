@@ -43,7 +43,17 @@ async def on_message(message):
 
     # LÍNEA CLAVE: Permite que discord.py procese los comandos como $repeat y $meme
     await bot.process_commands(message)
-
+    
+@bot.event
+async def on_guild_join(guild):
+    """Se ejecuta cuando el bot entra a un servidor."""
+    print(f'El bot se ha unido al servidor: {guild.name} (ID: {guild.id})')
+    
+    # Intenta enviar un mensaje de bienvenida en el primer canal donde tenga permiso de escribir
+    for channel in guild.text_channels:
+        if channel.permissions_for(guild.me).send_messages:
+            await channel.send(f"¡Hola **{guild.name}**! Gracias por invitarme. Usa `$` para ver mis comandos.\nPuedes usar $help para conocer mis comandos.")
+            break
 
 @bot.event
 async def on_message_delete(message):
