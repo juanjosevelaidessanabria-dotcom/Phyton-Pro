@@ -1,0 +1,27 @@
+body {
+    text-decoration-color: blue;
+    background-color:lightblue;
+    color: black;
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+h1, h2, h3 {
+    color:blue;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    animation: changing-color 5s infinite;
+}
+
+h1:hover{ animation: great 5s infinite;}
+
+@keyframes changing-color {
+    0% {color: blue;}
+    50% { color: aqua;}
+    100% {color: blue;}
+}
+
+@keyframes great {
+    0% {transform: scale(1)}
+    50% {transform: scale(2);}
+    100% {transform: scale(1);}
+}
