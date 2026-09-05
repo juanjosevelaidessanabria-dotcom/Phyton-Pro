@@ -3,6 +3,8 @@ from flask import Flask
 
 app = Flask(__name__)
 
+coin = ["head/cara","tails/sello"]
+
 facts_list = [
     "La mayoría de las personas que sufren adicción tecnológica experimentan un fuerte estrés cuando se encuentran fuera del área de cobertura de la red o no pueden utilizar sus dispositivos.",
     "Según un estudio realizado en 2018, más del 50% de las personas de entre 18 y 34 años se consideran dependientes de sus smartphones.",
@@ -21,6 +23,28 @@ facts_list = [
 @app.route("/")
 def hello_world():
     return '<h1>Hello, World!</h1>' \
-    f'<p>{random.choice(facts_list)}</p>'
+    '<a href="/random-facts">¡Ver un dato aleatorio!</a>\n'\
+    '<a href="/flip-coin">¡Lanzar una moneda!</a>'\
+    '<a href="/gen-pass">¡Generar una contraseña!</a>'
+
+@app.route('/random-facts')
+def rand_facts():
+    return f'<p>{random.choice(facts_list)}</p>'\
+    '<a href="/">Home</a>'
+
+@app.route('/flip-coin')
+def flip_coin():
+    return f'<p>{random.choice(coin)}<p>'\
+    '<a href="/">Home</a>'
+
+@app.route('/gen-pass')
+def gen_pass(pass_length=8):
+    """Function creating a password."""
+    elements = "qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM0123456789"
+    password = ""
+    for _ in range(pass_length):
+        password += random.choice(elements)
+    return f'<p>{password}</p>\n'\
+    '<a href="/">Home</a>'
 
 app.run(debug=True)
