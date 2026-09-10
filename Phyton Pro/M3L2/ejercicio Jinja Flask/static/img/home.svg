@@ -1,0 +1,44 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#1a3a2a"/>
+    </linearGradient>
+    <linearGradient id="roofGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#4ade80"/>
+      <stop offset="100%" stop-color="#16a34a"/>
+    </linearGradient>
+    <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#e2e8f0"/>
+      <stop offset="100%" stop-color="#94a3b8"/>
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Background circle -->
+  <circle cx="80" cy="80" r="75" fill="url(#bgGrad)" opacity="0.9"/>
+  <!-- House wall -->
+  <rect x="32" y="80" width="96" height="58" rx="4" fill="url(#wallGrad)"/>
+  <!-- Door -->
+  <rect x="65" y="102" width="30" height="36" rx="4" fill="#1e293b"/>
+  <circle cx="91" cy="120" r="2.5" fill="#4ade80"/>
+  <!-- Windows -->
+  <rect x="40" y="90" width="18" height="14" rx="3" fill="#bae6fd" opacity="0.8"/>
+  <line x1="49" y1="90" x2="49" y2="104" stroke="#64748b" stroke-width="1"/>
+  <line x1="40" y1="97" x2="58" y2="97" stroke="#64748b" stroke-width="1"/>
+  <rect x="102" y="90" width="18" height="14" rx="3" fill="#bae6fd" opacity="0.8"/>
+  <line x1="111" y1="90" x2="111" y2="104" stroke="#64748b" stroke-width="1"/>
+  <line x1="102" y1="97" x2="120" y2="97" stroke="#64748b" stroke-width="1"/>
+  <!-- Roof -->
+  <polygon points="24,82 80,32 136,82" fill="url(#roofGrad)" filter="url(#glow)"/>
+  <!-- Chimney -->
+  <rect x="98" y="42" width="12" height="24" rx="2" fill="#475569"/>
+  <!-- Solar panel hint on roof -->
+  <rect x="60" y="60" width="22" height="14" rx="2" fill="#38bdf8" opacity="0.7"/>
+  <line x1="71" y1="60" x2="71" y2="74" stroke="#0ea5e9" stroke-width="1"/>
+  <line x1="60" y1="67" x2="82" y2="67" stroke="#0ea5e9" stroke-width="1"/>
+  <!-- Glow dot on door knob -->
+  <circle cx="91" cy="120" r="4" fill="#4ade80" opacity="0.3"/>
+</svg>

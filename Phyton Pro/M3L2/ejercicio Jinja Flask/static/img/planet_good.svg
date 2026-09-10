@@ -1,0 +1,36 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="planetGood" cx="38%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#86efac"/>
+      <stop offset="60%" stop-color="#16a34a"/>
+      <stop offset="100%" stop-color="#052e16"/>
+    </radialGradient>
+    <radialGradient id="glowGood" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4ade80" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#4ade80" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <!-- Outer glow -->
+  <circle cx="100" cy="100" r="90" fill="url(#glowGood)"/>
+  <!-- Planet -->
+  <circle cx="100" cy="100" r="70" fill="url(#planetGood)"/>
+  <!-- Continent shapes -->
+  <ellipse cx="85" cy="80" rx="22" ry="16" fill="#22c55e" opacity="0.5" transform="rotate(-20 85 80)"/>
+  <ellipse cx="115" cy="110" rx="18" ry="12" fill="#15803d" opacity="0.4" transform="rotate(15 115 110)"/>
+  <ellipse cx="75" cy="118" rx="14" ry="9" fill="#22c55e" opacity="0.3"/>
+  <!-- Shine highlight -->
+  <ellipse cx="78" cy="72" rx="20" ry="14" fill="white" opacity="0.12" transform="rotate(-30 78 72)"/>
+  <!-- Ring -->
+  <ellipse cx="100" cy="100" rx="95" ry="24" stroke="#4ade80" stroke-width="4" fill="none" opacity="0.55" transform="rotate(-20 100 100)"/>
+  <!-- Stars -->
+  <circle cx="28" cy="32" r="2" fill="white" opacity="0.6"/>
+  <circle cx="162" cy="45" r="1.5" fill="white" opacity="0.5"/>
+  <circle cx="170" cy="155" r="2" fill="white" opacity="0.4"/>
+  <circle cx="35" cy="168" r="1.5" fill="white" opacity="0.5"/>
+  <!-- Check mark hint -->
+  <path d="M87 100 L97 110 L116 88" stroke="#bbf7d0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" fill="none" filter="url(#softGlow)" opacity="0.85"/>
+</svg>

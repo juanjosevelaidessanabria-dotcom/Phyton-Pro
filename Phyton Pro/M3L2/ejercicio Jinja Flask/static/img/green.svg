@@ -1,0 +1,86 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background Eco Gradient -->
+    <linearGradient id="ecoBgL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#020b05"/>
+      <stop offset="100%" stop-color="#064e3b"/>
+    </linearGradient>
+
+    <!-- Sun Glow -->
+    <radialGradient id="sunGlowM" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="1"/>
+      <stop offset="70%" stop-color="#f59e0b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Solar Panel Gradient -->
+    <linearGradient id="panelG" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38bdf8"/>
+      <stop offset="100%" stop-color="#0284c7"/>
+    </linearGradient>
+
+    <filter id="softGlowE">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    
+    <filter id="turbineAnim">
+      <feGaussianBlur stdDeviation="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- ── Base Circle ── -->
+  <circle cx="80" cy="80" r="75" fill="url(#ecoBgL)"/>
+
+  <!-- ── Glowing Sun (Top Right) ── -->
+  <circle cx="110" cy="50" r="35" fill="url(#sunGlowM)"/>
+  <circle cx="110" cy="50" r="14" fill="#fde68a" filter="url(#softGlowE)"/>
+
+  <!-- ── Wind Turbine (Left background) ── -->
+  <g transform="translate(45, 65)">
+    <!-- Pole -->
+    <rect x="-2" y="0" width="4" height="45" fill="#94a3b8" rx="2"/>
+    <!-- Blades (Animated rotation) -->
+    <g>
+      <animateTransform attributeName="transform" type="rotate" from="0 0 0" to="360 0 0" dur="8s" repeatCount="indefinite"/>
+      <path d="M0 0 L-3 -22 L0 -28 L3 -22 Z" fill="#f8fafc"/>
+      <g transform="rotate(120)"><path d="M0 0 L-3 -22 L0 -28 L3 -22 Z" fill="#e2e8f0"/></g>
+      <g transform="rotate(240)"><path d="M0 0 L-3 -22 L0 -28 L3 -22 Z" fill="#cbd5e1"/></g>
+    </g>
+    <!-- Center Hub -->
+    <circle cx="0" cy="0" r="3" fill="#475569"/>
+  </g>
+
+  <!-- ── Solar Panel (Center Right) ── -->
+  <g transform="translate(90, 105) rotate(-15) translate(-90, -105)">
+    <!-- Stand -->
+    <path d="M90 100 L90 135" stroke="#475569" stroke-width="4" stroke-linecap="round"/>
+    <path d="M70 135 L110 135" stroke="#334155" stroke-width="6" stroke-linecap="round"/>
+    
+    <!-- Base Rack -->
+    <rect x="50" y="70" width="80" height="45" rx="3" fill="#1e293b" stroke="#cbd5e1" stroke-width="2"/>
+    
+    <!-- Photovoltaic Cells -->
+    <rect x="55" y="74" width="33" height="17" rx="1" fill="url(#panelG)"/>
+    <rect x="92" y="74" width="33" height="17" rx="1" fill="url(#panelG)"/>
+    <rect x="55" y="93" width="33" height="17" rx="1" fill="url(#panelG)"/>
+    <rect x="92" y="93" width="33" height="17" rx="1" fill="url(#panelG)"/>
+
+    <!-- Glass Shine/Reflection -->
+    <path d="M53 72 L75 72 L65 115 L53 115 Z" fill="white" opacity="0.12"/>
+  </g>
+
+  <!-- ── Lush Green Leaves (Bottom Left) ── -->
+  <!-- Back leaf -->
+  <path d="M35 125 C20 110 15 85 25 80 C35 85 45 110 35 125 Z" fill="#16a34a"/>
+  <!-- Front leaf glowing -->
+  <path d="M40 135 C28 115 35 95 55 90 C55 105 50 120 40 135 Z" fill="#4ade80" filter="url(#softGlowE)"/>
+  <!-- Right leaf side -->
+  <path d="M50 135 C55 115 75 110 85 120 C70 125 60 130 50 135 Z" fill="#22c55e"/>
+
+  <!-- ── Eco Energy Orbs ── -->
+  <circle cx="65" cy="85" r="3" fill="#4ade80" filter="url(#softGlowE)"/>
+  <circle cx="85" cy="60" r="2.5" fill="#38bdf8" filter="url(#softGlowE)"/>
+  <circle cx="125" cy="95" r="3" fill="#a78bfa" filter="url(#softGlowE)"/>
+  <circle cx="100" cy="120" r="2" fill="#fde68a" filter="url(#softGlowE)"/>
+</svg>

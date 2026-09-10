@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Calculadora de eficiencia energética del hogar. Estima tu consumo de kWh y toma decisiones más sostenibles.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <title>{% block title %}Eficiencia Energética{% endblock %} · EcoCalc</title>
+</head>
+<body>
+  <header class="header">
+    <div class="header__inner">
+      <div class="header__content">
+        <span class="header__badge">⚡ EcoCalc 2026</span>
+        <h1>Calculadora de eficiencia energética</h1>
+        <p>Toma la iniciativa y reduce tu consumo. Pequeños cambios hacen grandes diferencias.</p>
+      </div>
+      <div class="header__visual">
+        <img src="{{ url_for('static', filename='img/header_illu.svg') }}" alt="Eco Technology Animation" class="header__illu">
+      </div>
+    </div>
+  </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+  <footer>© 2026 EcoCalc · Kodland Python Pro</footer>
+</body>
+</html>
