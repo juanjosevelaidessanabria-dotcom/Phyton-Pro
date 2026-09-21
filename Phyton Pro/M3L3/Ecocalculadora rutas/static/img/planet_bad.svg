@@ -1,0 +1,38 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="planetBad" cx="38%" cy="35%" r="60%">
+      <stop offset="0%" stop-color="#fca5a5"/>
+      <stop offset="60%" stop-color="#dc2626"/>
+      <stop offset="100%" stop-color="#450a0a"/>
+    </radialGradient>
+    <radialGradient id="glowBad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f87171" stop-opacity="0.4"/>
+      <stop offset="100%" stop-color="#f87171" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="smokeBlur">
+      <feGaussianBlur stdDeviation="3"/>
+    </filter>
+  </defs>
+  <!-- Outer glow -->
+  <circle cx="100" cy="100" r="90" fill="url(#glowBad)"/>
+  <!-- Planet -->
+  <circle cx="100" cy="100" r="70" fill="url(#planetBad)"/>
+  <!-- Dark patches (pollution) -->
+  <ellipse cx="88" cy="82" rx="20" ry="14" fill="#7f1d1d" opacity="0.5" transform="rotate(-15 88 82)"/>
+  <ellipse cx="116" cy="110" rx="16" ry="11" fill="#991b1b" opacity="0.4" transform="rotate(20 116 110)"/>
+  <ellipse cx="78" cy="116" rx="13" ry="8" fill="#7f1d1d" opacity="0.35"/>
+  <!-- Smoke/haze -->
+  <ellipse cx="100" cy="60" rx="25" ry="10" fill="#374151" opacity="0.25" filter="url(#smokeBlur)"/>
+  <!-- Shine -->
+  <ellipse cx="80" cy="74" rx="18" ry="12" fill="white" opacity="0.08" transform="rotate(-30 80 74)"/>
+  <!-- Ring -->
+  <ellipse cx="100" cy="100" rx="95" ry="24" stroke="#ef4444" stroke-width="4" fill="none" opacity="0.45" transform="rotate(-20 100 100)"/>
+  <!-- Stars -->
+  <circle cx="28" cy="32" r="2" fill="white" opacity="0.4"/>
+  <circle cx="162" cy="45" r="1.5" fill="white" opacity="0.35"/>
+  <circle cx="170" cy="155" r="2" fill="white" opacity="0.3"/>
+  <circle cx="35" cy="168" r="1.5" fill="white" opacity="0.35"/>
+  <!-- X mark -->
+  <path d="M88 88 L112 112" stroke="#fecaca" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+  <path d="M112 88 L88 112" stroke="#fecaca" stroke-width="5" stroke-linecap="round" opacity="0.85"/>
+</svg>

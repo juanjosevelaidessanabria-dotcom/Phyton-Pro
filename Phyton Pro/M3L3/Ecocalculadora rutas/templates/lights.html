@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Lámparas{% endblock %}
+{% block content %}
+<h2 class="main__title">¿Cuántas lámparas hay en su hogar?</h2>
+<ul class="list">
+
+  <li class="list__item">
+    <a href="{{ url_for('select_devices', size=size, lights=3) }}">
+      <img src="{{ url_for('static', filename='img/light.svg') }}" alt="2-4 lámparas" class="item__img">
+      <span>2–4 lámparas</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <!-- TAREA 2: Completa el href del enlace de abajo.
+           Observa el ejemplo de arriba: usa url_for con el nombre de la función correcta.
+           Esta página necesita mantener el valor de 'size' y añadir uno nuevo: lights.
+           ¿Qué número representa mejor el rango "4–6 lámparas"? -->
+    <a href="{{ url_for('select_devices', size=size, lights=5) }}">
+      <img src="{{ url_for('static', filename='img/light.svg') }}" alt="4-6 lámparas" class="item__img">
+      <span>4–6 lámparas</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <!-- TAREA 2: Mismo patrón que el anterior.
+           Recuerda: "8+" significa que hay al menos 8. ¿Qué número usarías para representar ese rango? -->
+    <a href="{{ url_for('select_devices', size=size, lights=8) }}">
+      <img src="{{ url_for('static', filename='img/light.svg') }}" alt="8+ lámparas" class="item__img">
+      <span>8+ lámparas</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <a href="">
+      <img src="{{ url_for('static', filename='img/light_green.svg') }}" alt="8+ lámparas" class="item__img">
+      <span>Nuestro montaje Ecológico</span>
+    </a>
+  </li>
+
+</ul>
+{% endblock %}

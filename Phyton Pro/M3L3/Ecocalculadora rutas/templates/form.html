@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% block title %}Eco-Construcción{% endblock %}
+{% block content %}
+
+<h2 class="main__title">¿Quieres una eco-construcción personalizada?</h2>
+
+<form action="{{ url_for('submit_form') }}" method="post" class="form">
+
+  <div class="form__grid">
+
+    {# ── Columna izquierda: datos personales ── #}
+    <div class="form__group">
+      <h3 class="form__group-title">Datos personales</h3>
+
+      <div class="form__field">
+        <label for="name">Tu nombre completo</label>
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Introduce tu nombre completo"
+          required
+        >
+      </div>
+
+      {# ──────────────────────────────────────────────────────────────
+         TAREA 5 · Crear el campo de correo electrónico
+         ──────────────────────────────────────────────────────────────
+         Fíjate en el campo "name" de arriba: tiene una etiqueta <label>
+         y un <input> con varios atributos.
+
+         Crea un campo similar, pero para el email del usuario:
+           · type        →  email
+           · name        →  email
+           · id          →  email
+           · placeholder →  Type in your email
+
+         Pista: el atributo "type" le dice al navegador qué tipo de
+         dato espera. Con type="email" valida automáticamente el formato.
+      ────────────────────────────────────────────────────────────── #}
+      <div class="form__field">
+        <label for="email">Correo electrónico</label>
+        <input
+          type="email"
+          name="email"
+          id="email"
+          placeholder="Ingresa tu correo electrónico"
+          required
+        >
+      </div>
+
+    </div>
+
+    {# ── Columna derecha: datos de visita ── #}
+    <div class="form__group">
+      <h3 class="form__group-title">Datos de visita</h3>
+
+      <div class="form__field">
+        <label for="address">Tu dirección</label>
+        <input
+          type="text"
+          name="address"
+          id="address"
+          placeholder="Calle, número, ciudad"
+          required
+        >
+      </div>
+
+      <div class="form__field">
+        <label for="date">Fecha preferida para la visita</label>
+        <input
+          type="date"
+          name="date"
+          id="date"
+          required
+        >
+      </div>
+
+    </div>
+
+  </div><!-- /.form__grid -->
+
+  <button class="form__submit" type="submit">
+    Enviar solicitud →
+  </button>
+
+</form>
+
+{% endblock %}

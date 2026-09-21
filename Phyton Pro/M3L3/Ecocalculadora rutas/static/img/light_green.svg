@@ -1,0 +1,105 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <!-- Background dark circle -->
+    <linearGradient id="bgLG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"   stop-color="#020b05"/>
+      <stop offset="100%" stop-color="#051a10"/>
+    </linearGradient>
+
+    <!-- Bulb body: green gradient -->
+    <linearGradient id="bulbGreen" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%"   stop-color="#bbf7d0"/>
+      <stop offset="55%"  stop-color="#22c55e"/>
+      <stop offset="100%" stop-color="#14532d"/>
+    </linearGradient>
+
+    <!-- Inner glow radial -->
+    <radialGradient id="innerGlowGreen" cx="42%" cy="35%" r="55%">
+      <stop offset="0%"   stop-color="#dcfce7" stop-opacity="0.9"/>
+      <stop offset="60%"  stop-color="#4ade80" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#16a34a" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Outer aura blur -->
+    <filter id="auraGreen" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="8"/>
+    </filter>
+
+    <!-- Drop glow for rays -->
+    <filter id="rayGlow">
+      <feGaussianBlur stdDeviation="2.5" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Leaf mask clip -->
+    <clipPath id="bulbClip">
+      <path d="M80 36 C55 36 46 56 46 68 C46 81 54 88 60 95 L60 106 C60 108.2 61.8 110 64 110 L96 110 C98.2 110 100 108.2 100 106 L100 95 C106 88 114 81 114 68 C114 56 105 36 80 36Z"/>
+    </clipPath>
+  </defs>
+
+  <!-- ── Background circle ── -->
+  <circle cx="80" cy="80" r="75" fill="url(#bgLG)"/>
+
+  <!-- ── Outer aura glow ── -->
+  <ellipse cx="80" cy="70" rx="42" ry="42" fill="#4ade80" opacity="0.12" filter="url(#auraGreen)"/>
+
+  <!-- ── Bulb body ── -->
+  <path d="M80 36 C55 36 46 56 46 68 C46 81 54 88 60 95 L60 106 C60 108.2 61.8 110 64 110 L96 110 C98.2 110 100 108.2 100 106 L100 95 C106 88 114 81 114 68 C114 56 105 36 80 36Z"
+        fill="url(#bulbGreen)"/>
+
+  <!-- ── Inner glow overlay ── -->
+  <path d="M80 36 C55 36 46 56 46 68 C46 81 54 88 60 95 L60 106 C60 108.2 61.8 110 64 110 L96 110 C98.2 110 100 108.2 100 106 L100 95 C106 88 114 81 114 68 C114 56 105 36 80 36Z"
+        fill="url(#innerGlowGreen)"/>
+
+  <!-- ── Eco leaf silhouette inside bulb ── -->
+  <g clip-path="url(#bulbClip)" opacity="0.22">
+    <path d="M80 90 C62 78 58 56 68 44 C78 60 96 58 96 72 C96 84 88 92 80 90Z"
+          fill="#052e16"/>
+    <line x1="80" y1="90" x2="80" y2="105" stroke="#052e16" stroke-width="2.5" stroke-linecap="round"/>
+    <path d="M80 78 C76 74 72 72 68 73" stroke="#052e16" stroke-width="2" stroke-linecap="round" fill="none"/>
+  </g>
+
+  <!-- ── Filament (green tint) ── -->
+  <path d="M70 75 Q75 68 80 75 Q85 82 90 75"
+        stroke="#052e16" stroke-width="2.2" fill="none" stroke-linecap="round"/>
+
+  <!-- ── Shine highlight ── -->
+  <ellipse cx="66" cy="60" rx="10" ry="14"
+           fill="white" opacity="0.13" transform="rotate(-30 66 60)"/>
+
+  <!-- ── Base rings ── -->
+  <rect x="60" y="110" width="40" height="7"  rx="2" fill="#166534"/>
+  <rect x="62" y="117" width="36" height="7"  rx="2" fill="#14532d"/>
+  <rect x="65" y="124" width="30" height="7"  rx="2" fill="#052e16"/>
+
+  <!-- Thread lines on base -->
+  <line x1="60" y1="113" x2="100" y2="113" stroke="#4ade80" stroke-width="0.7" opacity="0.3"/>
+  <line x1="62" y1="120" x2="98"  y2="120" stroke="#4ade80" stroke-width="0.7" opacity="0.3"/>
+
+  <!-- ── Ray lines (green, glowing) ── -->
+  <line x1="80" y1="20" x2="80" y2="29"
+        stroke="#4ade80" stroke-width="2.5" stroke-linecap="round"
+        opacity="0.85" filter="url(#rayGlow)"/>
+
+  <line x1="54" y1="28" x2="59" y2="36"
+        stroke="#4ade80" stroke-width="2" stroke-linecap="round"
+        opacity="0.7" filter="url(#rayGlow)"/>
+
+  <line x1="106" y1="28" x2="101" y2="36"
+        stroke="#4ade80" stroke-width="2" stroke-linecap="round"
+        opacity="0.7" filter="url(#rayGlow)"/>
+
+  <line x1="38"  y1="50" x2="46"  y2="55"
+        stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"
+        opacity="0.5" filter="url(#rayGlow)"/>
+
+  <line x1="122" y1="50" x2="114" y2="55"
+        stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"
+        opacity="0.5" filter="url(#rayGlow)"/>
+
+  <!-- ── Small eco leaf badge (bottom-right corner) ── -->
+  <circle cx="118" cy="118" r="16" fill="#052e16" stroke="#4ade80" stroke-width="1.5" opacity="0.9"/>
+  <path d="M118 127 C110 120 108 109 113 103 C118 111 126 110 126 117 C126 123 122 128 118 127Z"
+        fill="#4ade80" opacity="0.9"/>
+  <line x1="118" y1="127" x2="118" y2="132" stroke="#4ade80" stroke-width="1.8" stroke-linecap="round"/>
+</svg>
