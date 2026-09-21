@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}Inicio{% endblock %}
+{% block content %}
+<h2 class="main__title">Selecciona el tamaño de tu hogar:</h2>
+<ul class="list">
+  <li class="list__item">
+    <a href="{{ url_for('select_lights', size=1) }}">
+      <img src="{{ url_for('static', filename='img/home.svg') }}" alt="pequeño" class="item__img">
+      <span>Hogar pequeño</span>
+    </a>
+  </li>
+  <li class="list__item">
+    <a href="{{ url_for('select_lights', size=2) }}">
+      <img src="{{ url_for('static', filename='img/home_medium.svg') }}" alt="mediano" class="item__img">
+      <!-- TAREA 1: El span de abajo está vacío.
+             Fijate en cómo está escrito el primer hogar y sigue el mismo patrón.
+             ¿Qué adjetivo describes un hogar que no es ni pequeño ni grande? -->
+      <span>Hogar mediano</span>
+    </a>
+  </li>
+  <li class="list__item">
+    <a href="{{ url_for('select_lights', size=3) }}">
+      <img src="{{ url_for('static', filename='img/home_large.svg') }}" alt="grande" class="item__img">
+      <!-- TAREA 1: Mismo patrón que el anterior.
+             ¿Cómo se llama un hogar que es más grande que mediano? -->
+      <span>Hogar grande</span>
+    </a>
+  </li>
+</ul>
+{% endblock %}

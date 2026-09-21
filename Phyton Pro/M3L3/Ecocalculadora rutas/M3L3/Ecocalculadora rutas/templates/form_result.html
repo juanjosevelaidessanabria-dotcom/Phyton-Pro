@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Solicitud enviada{% endblock %}
+{% block content %}
+
+{# ──────────────────────────────────────────────────────────────────────
+   TAREA 6 · Mostrar los datos del formulario y opción de descarga
+   ────────────────────────────────────────────────────────────────────── #}
+
+<div class="form-result">
+  <h2>¡Gracias, {{ name }}! Tu solicitud fue recibida.</h2>
+  
+  <p><strong>Nombre:</strong> {{ name }}</p>
+  <p><strong>Email:</strong> {{ email }}</p>
+  <p><strong>Dirección:</strong> {{ address }}</p>
+  <p><strong>Fecha:</strong> {{ date }}</p>
+
+  <!-- Opción de descarga en TXT -->
+  <a href="{{ url_for('download_txt', filename='form_result_' ~ name ~ '.txt') }}">
+    ⬇ Descargar datos en TXT
+  </a>
+
+  <br><br>
+
+  <a href="{{ url_for('index') }}">Volver al inicio</a>
+</div>
+
+{% endblock %}

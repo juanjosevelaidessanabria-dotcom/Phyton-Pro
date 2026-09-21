@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+{% block title %}Aparatos{% endblock %}
+{% block content %}
+<h2 class="main__title">¿Cuántos aparatos eléctricos tiene?</h2>
+<ul class="list">
+
+  <li class="list__item">
+    <a href="{{ url_for('show_result', size=size, lights=lights, devices=3) }}">
+      <img class="item__img" src="{{ url_for('static', filename='img/battery.svg') }}" alt="3-5 aparatos">
+      <span>3–5 aparatos</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <!-- TAREA 3: Completa el href del enlace de abajo.
+           Esta vez la función destino necesita 3 parámetros de la URL: size, lights y devices.
+           Fíjate en el ejemplo de arriba para ver cómo se pasan.
+           ¿Qué número representaría bien el rango "6–8 aparatos"? -->
+    <a href="{{ url_for('show_result', size=size, lights=lights, devices=7) }}">
+      <img class="item__img" src="{{ url_for('static', filename='img/battery.svg') }}" alt="6-8 aparatos">
+      <span>6–8 aparatos</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <!-- TAREA 3: Mismo patrón. Aquí el rango es "10+".
+           Elige un número que tenga sentido para representarlo. -->
+    <a href="{{ url_for('show_result', size=size, lights=lights, devices=10) }}">
+      <img class="item__img" src="{{ url_for('static', filename='img/battery.svg') }}" alt="10+ aparatos">
+      <span>10+ aparatos</span>
+    </a>
+  </li>
+
+  <li class="list__item">
+    <a href="">
+      <img class="item__img" src="{{ url_for('static', filename='img/green.svg') }}" alt="10+ aparatos">
+      <span>Nuestra Asamblea Ecológica</span>
+    </a>
+  </li>
+
+</ul>
+{% endblock %}

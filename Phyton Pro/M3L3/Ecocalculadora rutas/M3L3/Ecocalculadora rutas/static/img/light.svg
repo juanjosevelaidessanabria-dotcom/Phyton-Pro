@@ -1,0 +1,42 @@
+<svg width="160" height="160" viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bgL" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f2027"/>
+      <stop offset="100%" stop-color="#1a1a2e"/>
+    </linearGradient>
+    <linearGradient id="bulbGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#f59e0b"/>
+    </linearGradient>
+    <radialGradient id="glow2" cx="50%" cy="40%" r="50%">
+      <stop offset="0%" stop-color="#fef9c3" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="blur2">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+  </defs>
+  <!-- Background -->
+  <circle cx="80" cy="80" r="75" fill="url(#bgL)" opacity="0.9"/>
+  <!-- Glow aura -->
+  <ellipse cx="80" cy="72" rx="38" ry="38" fill="#fbbf24" opacity="0.15" filter="url(#blur2)"/>
+  <!-- Bulb body -->
+  <path d="M80 36 C55 36 46 56 46 68 C46 81 54 88 60 95 L60 106 C60 108.2 61.8 110 64 110 L96 110 C98.2 110 100 108.2 100 106 L100 95 C106 88 114 81 114 68 C114 56 105 36 80 36Z" fill="url(#bulbGrad)"/>
+  <!-- Inner glow -->
+  <ellipse cx="80" cy="68" rx="26" ry="26" fill="url(#glow2)" opacity="0.6"/>
+  <!-- Filament lines -->
+  <path d="M70 75 Q75 68 80 75 Q85 82 90 75" stroke="#78350f" stroke-width="2" fill="none" stroke-linecap="round"/>
+  <!-- Base rings -->
+  <rect x="60" y="110" width="40" height="7" rx="2" fill="#d1d5db"/>
+  <rect x="62" y="117" width="36" height="7" rx="2" fill="#9ca3af"/>
+  <rect x="65" y="124" width="30" height="7" rx="2" fill="#6b7280"/>
+  <!-- Screw thread lines -->
+  <line x1="60" y1="113" x2="100" y2="113" stroke="#9ca3af" stroke-width="0.8" opacity="0.4"/>
+  <line x1="62" y1="120" x2="98" y2="120" stroke="#9ca3af" stroke-width="0.8" opacity="0.4"/>
+  <!-- Ray lines -->
+  <line x1="80" y1="22" x2="80" y2="30" stroke="#fbbf24" stroke-width="2.5" stroke-linecap="round" opacity="0.8"/>
+  <line x1="56" y1="29" x2="60" y2="36" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="104" y1="29" x2="100" y2="36" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
+  <line x1="40" y1="50" x2="47" y2="54" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+  <line x1="120" y1="50" x2="113" y2="54" stroke="#fbbf24" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+</svg>

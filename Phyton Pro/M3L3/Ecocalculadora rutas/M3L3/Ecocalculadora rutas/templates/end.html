@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Resultado{% endblock %}
+{% block content %}
+  <h2 class="main__title main__title--margin">Tu consumo estimado:</h2>
+  <div class="main__rez">
+    {% if result <= 150 %}
+      <img src="{{ url_for('static', filename='img/planet_good.svg') }}" alt="bueno" class="rez__img">
+      <div class="rez__card">
+        <span class="rez__badge rez__badge--good">✓ Excelente eficiencia</span>
+        <div class="rez__value">{{ result }}</div>
+        <div class="rez__unit">kWh / mes</div>
+        <p class="rez__label">¡Increíble! Tu hogar consume muy poca energía. Sigue así y ayudas al planeta.</p>
+      </div>
+    {% elif result < 300 %}
+      <img src="{{ url_for('static', filename='img/planet_medium.svg') }}" alt="medio" class="rez__img">
+      <div class="rez__card">
+        <span class="rez__badge rez__badge--medium">~ Eficiencia media</span>
+        <div class="rez__value">{{ result }}</div>
+        <div class="rez__unit">kWh / mes</div>
+        <p class="rez__label">Buen trabajo, pero hay margen de mejora. Pequeños ajustes pueden marcar la diferencia.</p>
+      </div>
+    {% else %}
+      <img src="{{ url_for('static', filename='img/planet_bad.svg') }}" alt="bajo" class="rez__img">
+      <div class="rez__card">
+        <span class="rez__badge rez__badge--bad">✕ Necesita mejorar</span>
+        <div class="rez__value">{{ result }}</div>
+        <div class="rez__unit">kWh / mes</div>
+        <p class="rez__label">Tu consumo es alto. Considera apagar dispositivos en standby y usar iluminación LED.</p>
+      </div>
+    {% endif %}
+  </div>
+
+  {# ──────────────────────────────────────────────────────────────────
+     TAREA 4 · Paso 1
+     Después del bloque de resultados añade un <span> con el texto:
+     «¿Quieres hacer del mundo un lugar más ecológico? ¡Rellena el
+     formulario y haremos una eco-construcción para ti!»
+     Recuerda que <span> va dentro del {% block content %}, fuera de
+     .main__rez, para que aparezca debajo de la tarjeta de resultado.
+  ── ──────────────────────────────────────────────────────────────── #}
+  <span>¿Quieres hacer del mundo un lugar más ecológico? ¡Rellena el formulario y haremos una eco-construcción para ti!</span>
+  {# ──────────────────────────────────────────────────────────────────
+     TAREA 4 · Paso 2
+     Añade un enlace (etiqueta <a>) debajo del <span> que acabas de
+     crear. El enlace debe:
+       - Mostrar el texto: «Rellene el formulario»
+       - Tener la clase CSS:  class="main_link"
+       - Apuntar a la ruta form usando Jinja2:  href="{{ url_for('form') }}"
+     Fíjate en cómo index.html usa url_for para enlazar otras páginas.
+  ── ──────────────────────────────────────────────────────────────── #}
+  
+  <a class="main_link" href="{{ url_for( 'form') }}">Rellene el formulario</a>
+{% endblock %}
