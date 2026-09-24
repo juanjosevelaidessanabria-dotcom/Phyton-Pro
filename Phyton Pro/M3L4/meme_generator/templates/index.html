@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generador de Memes Pro</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <main class="app-container">
+        <!-- Panel Lateral: Controles del Formulario -->
+        <aside class="sidebar">
+            <header class="branding">
+                <img src="{{ url_for('static', filename='img/logo.svg') }}" alt="Logo" class="logo">
+                <h1>MemeGen</h1>
+            </header>
+            
+            <form method="POST" action="/" class="meme-form">
+                
+                <!-- TODO Asignación #1: Añade nuevos memes aquí -->
+                <div class="form-group">
+                    <label for="image-selector">1. Selecciona una plantilla</label>
+                    <select name="image-selector" id="image-selector">
+                        <option value="logo.svg" {% if selected_image == 'logo.svg' %}selected{% endif %}>Selecciona un meme</option>
+                        <option value="meme_1.jpg" {% if selected_image == 'meme_1.jpg' %}selected{% endif %}>Chica desastre</option>
+                        <option value="meme_2.jpg" {% if selected_image == 'meme_2.jpg' %}selected{% endif %}>Dos botones</option>
+                        <!-- Inserta tus nuevas etiquetas <option> debajo de esta línea -->
+                        <option value="meme_3.jpg" {% if selected_image == 'meme_3.jpg' %}selected{% endif %}>Drake aprueba/rechaza</option>
+                        <option value="meme_4.jpg" {% if selected_image == 'meme_4.jpg' %}selected{% endif %}>Deseo se va</option>
+                        <option value="meme_5.jpg" {% if selected_image == 'meme_5.jpg' %}selected{% endif %}>Perrito fuerte/debil</option>
+                        <option value="meme_6.jpg" {% if selected_image == 'meme_6.jpg' %}selected{% endif %}>Cerebro expandiendose</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="textTop">2. Texto Superior</label>
+                    <input type="text" name="textTop" id="textTop" placeholder="Ej: Cuando tu código compila..." value="{{ text_top }}">
+                </div>
+                <div class="form-group">
+                    <label for="textBottom">3. Texto Inferior</label>
+                    <input type="text" name="textBottom" id="textBottom" placeholder="Ej: ...pero falla en producción" value="{{ text_bottom }}">
+                </div>
+
+                <div class="form-group-row">
+                    <div class="form-group half">
+                        <label for="textTop_y">Pos. Y Superior (%)</label>
+                        <input type="number" name="textTop_y" id="textTop_y" value="{{ text_top_y }}" min="0" max="100">
+                    </div>
+                    <div class="form-group half">
+                        <label for="textBottom_y">Pos. Y Inferior (%)</label>
+                        <input type="number" name="textBottom_y" id="textBottom_y" value="{{ text_bottom_y }}" min="0" max="100">
+                    </div>
+                </div>
+
+                <!-- TODO Tarea Adicional: Añade más colores aquí -->
+                <div class="form-group">
+                    <label for="color-selector">Color del Texto</label>
+                    <select name="color-selector" id="color-selector">
+                        <option value="white" {% if selected_color == 'white' %}selected{% endif %}>Blanco</option>
+                        <option value="black" {% if selected_color == 'black' %}selected{% endif %}>Negro</option>
+                        <!-- Inserta tus nuevos colores debajo de esta línea -->
+
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="text_size" style="display: flex; justify-content: space-between;">
+                        <span>Tamaño del Texto</span>
+                        <span class="text-accent"><output id="valor_tamanio">{{ text_size }}</output>px</span>
+                    </label>
+                    <input 
+                        type="range" 
+                        name="text_size" 
+                        id="text_size" 
+                        min="20" 
+                        max="100" 
+                        value="{{ text_size }}" 
+                        oninput="document.getElementById('valor_tamanio').value = this.value"
+                    >
+                </div>
+
+                <button type="submit" class="btn-primary">Generar Meme ✨</button>
+            </form>
+        </aside>
+
+        <!-- Área Central: Visualización del Meme -->
+        <section class="canvas-area">
+            <div class="meme-container">
+                
+                <!-- TODO Asignación #2 y #3: Inyecta variables de Jinja y estilos CSS en línea (color, top/bottom y font-size) -->
+                <p class="meme-text text-top" style=color: {{ selected_color }}; top: {{ text_top_y }}%; font-size: {{ text_size }}px;">
+                    <!-- Inyecta la variable del texto superior aquí -->
+                    {{text_top}}
+                </p>
+                
+                <img class="meme-image" src="{{ url_for('static', filename='img/' + selected_image) }}" alt="Tu Meme Generado">
+                
+                <!-- TODO Asignación #2 y #3: Inyecta variables de Jinja y estilos CSS en línea (color, top/bottom y font-size) -->
+                <p class="meme-text text-bottom" style=color: {{ selected_color }}; bottom: {{ text_bottom_y }}%; font-size: {{ text_size }}px;">
+                    <!-- Inyecta la variable del texto inferior aquí -->
+                    {{text_bottom}}
+                </p>
+                
+            </div>
+        </section>
+    </main>
+</body>
+</html>
